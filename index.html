@@ -16,6 +16,13 @@ bitte TailwindCSS und jQuery verwenden-->
       
       $(document).ready(function () {
 
+        /* Open Cookie popup */
+        $("#CookiePopup").hide();
+
+        $("#openPopupButton").click(function () {
+          $("#CookiePopup").toggle();
+        });
+
         /* Highlight selected menu item */
         $(".tab_container:first").show();
         $(".tab_navigation li:first").addClass("border-l-4 border-[#e96809]");
@@ -39,10 +46,10 @@ bitte TailwindCSS und jQuery verwenden-->
         );
 
         /* Change toggle style when activated */
-        $("#toggle").on("click",(function () {
+        $("#toggle").click(function () {
           $("#toggle").toggleClass("bg-[#e96809]");
           $("#toggleCircle").toggleClass("translate-x-5");
-        }));
+        });
 
        });
 
@@ -66,7 +73,14 @@ bitte TailwindCSS und jQuery verwenden-->
   </head>
 
   <body>
-    <div class="fixed w-[730px] min-w-[730px] h-[580px] inset-0 m-auto">
+
+    <div id="openPopupButton" class="bg-green-500 w-48 h-12 flex justify-center items-center">
+      <div>Cookie Einstellungen</div></div>
+    
+
+    <!-- Cookie Popup -->
+    
+    <div id="CookiePopup" class="fixed w-[730px] min-w-[730px] h-[580px] inset-0 m-auto">
       
       <!-- Header -->
       <div
