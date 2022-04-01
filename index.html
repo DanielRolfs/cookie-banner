@@ -37,26 +37,37 @@ bitte TailwindCSS und jQuery verwenden-->
             $(".tab_navigation li").removeClass("bg-[#e96809]/25");
           }
         );
-      });
+
+        /* Change toggle style when activated */
+        $("#toggle").on("click",(function () {
+          $("#toggle").toggleClass("bg-[#e96809]");
+          $("#toggleCircle").toggleClass("translate-x-5");
+        }));
+
+       });
+
+/*       $(".tab_navigation li").click(function (event) {
+        index = $(this).index();
+        $(".tab_navigation li").removeClass("border-l-4 border-[#e96809]");
+        $(this).addClass("border-l-4 border-[#e96809]");
+        $(".tab_container").hide();
+        $(".tab_container").eq(index).show();
+      }); */
 
      
     </script>
 
     <style>
-      /*  .tab_navigation li.active,
-      .tab_navigation li:hover {
-        border-color: #e96809;
-        border-left-width: 7px;
-      } */
-
       body {
         background: grey;
       }
     </style>
+
   </head>
 
   <body>
     <div class="fixed w-[730px] min-w-[730px] h-[580px] inset-0 m-auto">
+      
       <!-- Header -->
       <div
         id="header"
@@ -157,18 +168,21 @@ bitte TailwindCSS und jQuery verwenden-->
               <div class="mr-2">
                 <!-- Toggle Button -->
                 <button
+                  id="toggle"
                   type="button"
-                  class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
                   role="switch"
                   aria-checked="false"
                 >
                   <span class="sr-only">Use setting</span>
                   <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
                   <span
+                    id="toggleCircle"
                     aria-hidden="true"
                     class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
                   ></span>
                 </button>
+
               </div>
             </div>
             <p>
