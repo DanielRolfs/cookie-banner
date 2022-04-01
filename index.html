@@ -54,10 +54,14 @@ bitte TailwindCSS und jQuery verwenden-->
         $(this).children(".toggleCircle").toggleClass("translate-x-5");
       });
 
+      $("#activateAll").click(function () {
+        $(".toggle").addClass("bg-[#e96809]");
+        $(".toggleCircle").addClass("translate-x-5");
+      });
+
     });
 
-
- 
+   
 
 
   </script>
@@ -248,7 +252,7 @@ bitte TailwindCSS und jQuery verwenden-->
       <button class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
         Auswähl bestätigen
       </button>
-      <button class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+      <button id="activateAll" class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
         Alle zulassen
       </button>
     </div>
