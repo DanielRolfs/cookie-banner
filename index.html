@@ -1,0 +1,205 @@
+<!-- When you click a button a popup should open with tabs for each cookie category like on this page: https://www.accenture.com/de-de 
+
+bitte TailwindCSS und jQuery verwenden-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      
+      $(document).ready(function () {
+
+        /* Highlight selected menu item */
+        $(".tab_container:first").show();
+        $(".tab_navigation li:first").addClass("border-l-4 border-[#e96809]");
+
+        $(".tab_navigation li").click(function (event) {
+          index = $(this).index();
+          $(".tab_navigation li").removeClass("border-l-4 border-[#e96809]");
+          $(this).addClass("border-l-4 border-[#e96809]");
+          $(".tab_container").hide();
+          $(".tab_container").eq(index).show();
+        });
+
+        /* Change style of hover menu item */
+        $("li").hover(
+          function () {
+            $(this).addClass("bg-[#e96809]/25");
+          },
+          function () {
+            $(".tab_navigation li").removeClass("bg-[#e96809]/25");
+          }
+        );
+      });
+
+     
+    </script>
+
+    <style>
+      /*  .tab_navigation li.active,
+      .tab_navigation li:hover {
+        border-color: #e96809;
+        border-left-width: 7px;
+      } */
+
+      body {
+        background: grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fixed w-[730px] min-w-[730px] h-[580px] inset-0 m-auto">
+      <!-- Header -->
+      <div
+        id="header"
+        class="h-auto p-4 flex justify-between items-center drop-shadow-lg bg-white"
+      >
+        <div>Cookie Einstellungen</div>
+        <img
+          src="https://github.com/DanielRolfs/media/blob/main/blu/blu-orange-small.jpg"
+          width="100"
+          height="40"
+        />
+      </div>
+
+      <!-- Menu Bar -->
+      <div id="container" class="bg-white w-full flex flex-row h-[432px]">
+        <ul
+          id="tab_navigation"
+          class="tab_navigation w-1/3 bg-black cursor-pointer text-white pt-8"
+        >
+          <!-- 1 -->
+          <li class="px-4 py-2 hover:">
+            <p>Ihre Privatsphäre</p>
+          </li>
+
+          <!-- 2 -->
+          <li class="px-4 py-2">
+            <p>Unbedingt notwendige Cookies</p>
+            <p class="text-[#E96809] text-xs">Immer aktiv</p>
+          </li>
+
+          <!-- 3 -->
+          <li class="px-4 py-2">
+            <p>Erstanbieter-Analytik-Cookies</p>
+            <p class="text-[#E96809] text-xs">aktiv</p>
+          </li>
+        </ul>
+
+        <!-- Content Area -->
+        <div
+          id="tab_container_area"
+          class="px-6 w-2/3 py-2 pt-6 overflow-auto shadow-inner"
+        >
+          <!-- 1 -->
+          <div id="tab_container" class="tab_container">
+            <div class="font-bold my-4">
+              <h2>Ihre Privatsphäre</h2>
+              <div></div>
+            </div>
+            <p>
+              Wenn Sie eine Website besuchen, kann diese Website
+              personenbezogene Informationen abrufen oder speichern. Dies
+              geschieht meist in Form von Cookies. Bei den abgerufenen oder
+              gespeicherten Informationen kann es sich um Informationen über
+              Sie, Ihre Einstellungen oder Ihr Gerät handeln. Der
+              Verwendungszweck dieser Informationen kann den nachstehenden
+              Cookie-Kategorien entnommen werden. Die verantwortliche Stelle für
+              die Verarbeitung Ihrer Daten durch unsere Cookies ist Accenture
+              PLC. Weiterhin verwenden wir ausgewählte Cookies von
+              Drittanbietern (und für welche diese Drittanbieter verantwortlich
+              sind), darunter Google Analytics, Microsoft, Marketo Munchkin
+              Tracking, Twitter, Knotch, YouTube, Instagram, Yoptima oder
+              Linkedin Analytics, um auf diese Weise Web-Analysen und weitere
+              Informationen über unsere Websites zu erhalten. Sie können
+              entscheiden, ob Sie die jeweiligen Cookies zulassen, indem Sie den
+              Schieberegler der einzelnen Kategorien entsprechend setzen. Wenn
+              Sie Cookies zulassen, werden alle unter der jeweiligen
+              Cookie-Kategorie beschriebenen Funktionen aktiviert. Wenn Sie
+              Cookies nicht zulassen, werden die entsprechenden Funktionen nicht
+              aktiviert. Da wir Ihr Recht auf Privatsphäre respektieren, können
+              Sie sich entscheiden, bestimmte Arten von Cookies nicht
+              zuzulassen. Weiterhin haben Sie das Recht, Ihr Einverständnis zur
+              Verwendung von Cookies zu widerrufen. Passen Sie dazu Ihre
+              Einstellungen in unserem Cookie Consent Manager an. Klicken Sie
+              auf die verschiedenen Kategorieüberschriften, um mehr zu erfahren
+              und unsere Standardeinstellungen zu ändern. Weitere Informationen
+              finden Sie in unserer Cookie-Richtlinie.
+            </p>
+          </div>
+
+          <!-- 2 -->
+          <div id="tab_container" class="tab_container">
+            <div class="font-bold my-4 flex justify-between">
+              <h2 class="">Unbedingt notwendige Cookies</h2>
+              <div class="text-green-500">Immer aktiv</div>
+            </div>
+            <p>
+              Diese Cookies sind erforderlich, damit Sie sich auf der Website
+              bewegen und ihre Funktionen nutzen können, z. B. um Zugriff auf
+              sichere Bereiche der Website zu gewähren. Ohne diese Cookies
+              können die von Ihnen gewünschten Leistungen nicht erbracht werden.
+            </p>
+          </div>
+
+          <!-- 3 -->
+          <div id="tab_container" class="tab_container">
+            <div class="font-bold my-4 flex justify-between">
+              <h2 class="">Erstanbieter-Analytik-Cookies</h2>
+              <div class="mr-2">
+                <!-- Toggle Button -->
+                <button
+                  type="button"
+                  class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  role="switch"
+                  aria-checked="false"
+                >
+                  <span class="sr-only">Use setting</span>
+                  <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+                  <span
+                    aria-hidden="true"
+                    class="translate-x-0 pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                  ></span>
+                </button>
+              </div>
+            </div>
+            <p>
+              Diese Cookies ermöglichen es uns Datenanalysen zur Bewertung und
+              Verbesserung der Leistungsfähigkeit unserer Website durchzuführen.
+              Sie ermöglichen es uns weiterhin, Ihnen relevantere Inhalte
+              bereitzustellen. Diese Cookies sammeln keine Informationen, durch
+              die ein Besucher identifiziert werden kann. Mit Ausnahme weniger
+              Fälle, in denen wir Dritte damit beauftragen, in unserem Namen zu
+              handeln, geben diese Cookies keine Informationen, die Rückschlüsse
+              auf Ihre Identität zulassen, an externe Anbieter oder
+              Dienstleister weiter. Diese Anbieter oder Dienstleister sind
+              jedoch nicht befugt die so erhaltenen Daten für eigene Zwecke zu
+              verwenden.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        id="footer"
+        class="absolute h-auto w-full bg-white bottom-0 p-4 flex justify-end text-[#E96809] space-x-4 shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
+      >
+        <button class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+          Auswähl bestätigen
+        </button>
+        <button class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+          Alle zulassen
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
