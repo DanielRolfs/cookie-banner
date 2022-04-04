@@ -57,11 +57,20 @@ bitte TailwindCSS und jQuery verwenden-->
       $("#activateAll").click(function () {
         $(".toggle").addClass("bg-[#e96809]");
         $(".toggleCircle").addClass("translate-x-5");
+        $(".inaktiv").addClass("hidden");
+        $(".aktiv").removeClass("hidden");
       });
 
       $("#deactivateAll").click(function () {
         $(".toggle").removeClass("bg-[#e96809]");
         $(".toggleCircle").removeClass("translate-x-5");
+        $(".aktiv").addClass("hidden");
+        $(".inaktiv").removeClass("hidden");
+      });
+
+      /* Close Cookie Popup */
+        $(".closePopup").click(function () {
+        $("#CookiePopup").hide();
       });
 
     });
@@ -113,13 +122,15 @@ bitte TailwindCSS und jQuery verwenden-->
         <!-- 3 -->
         <li class="px-4 py-2">
           <p>Erstanbieter-Analytik-Cookies</p>
-          <p class="text-[#E96809] text-xs">aktiv</p>
+          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
         <!-- 4 -->
         <li class="px-4 py-2">
           <p>Leistungs- und Funktions-Cookies</p>
-          <p class="text-[#E96809] text-xs">aktiv</p>
+          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
 
@@ -251,13 +262,13 @@ bitte TailwindCSS und jQuery verwenden-->
     <!-- Footer -->
     <div id="footer"
       class="absolute h-auto w-full bg-white bottom-0 p-4 flex justify-end text-[#E96809] space-x-4 shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
-      <button id="deactivateAll" class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+      <button id="deactivateAll" class="closePopup bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
         Alle ablehnen
       </button>
-      <button class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+      <button class="closePopup bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
         Auswähl bestätigen
       </button>
-      <button id="activateAll" class="bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
+      <button id="activateAll" class="closePopup bg-white border-2 rounded-lg border-[#E96809] py-2 px-8">
         Alle zulassen
       </button>
     </div>
