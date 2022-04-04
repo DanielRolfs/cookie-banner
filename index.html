@@ -17,11 +17,11 @@ bitte TailwindCSS und jQuery verwenden-->
 
     $(document).ready(function () {
 
-     
-       /* Hide Cookie popup on start*/
-     /*  $("#CookiePopup").hide(); */
 
-     /* Toggle Cookie popup */
+      /* Hide Cookie popup on start*/
+      $("#CookiePopup").hide();
+
+      /* Toggle Cookie popup */
       $("#openPopupButton").click(function () {
         $("#CookiePopup").toggle();
       });
@@ -69,13 +69,13 @@ bitte TailwindCSS und jQuery verwenden-->
       });
 
       /* Close Cookie Popup */
-        $(".closePopup").click(function () {
+      $(".closePopup").click(function () {
         $("#CookiePopup").hide();
       });
 
     });
 
-   
+
 
 
   </script>
@@ -90,19 +90,33 @@ bitte TailwindCSS und jQuery verwenden-->
 
 <body>
 
-  <div id="openPopupButton" class="bg-green-500 w-48 h-12 flex justify-center items-center">
-    <div>Cookie Einstellungen</div>
+  <div class="relative h-screen w-screen gb-green-500 text-[#E96809]">
+    <div class="absolute bottom-0 bg-black w-full h-min flex flex-col justify-end items-center md:flex-row">
+      <p class="py-4 px-8 mr-6">Neben technisch notwendigen Cookies, die erforderlich sind, um die Funktionalität
+        unserer Website
+        bereitzustellen verwenden wir Cookies, um unsere Website und unsere Marketingmaßnahmen zu optimieren. Indem Sie
+        auf Akzeptieren klicken, willigen Sie in die Verwendung aller Cookies ein. Im Footer unserer Website können Sie
+        Ihr Widerspruchsrecht wahrnehmen. Nähere Hinweise erhalten Sie in unsererDatenschutzerklärung.
+      </p>
+      <div class="flex flex-col sm:flex-row sm:mb-4">
+        <button id="openPopupButton" class="border-2 whitespace-nowrap rounded-lg border-[#E96809] py-2 px-8 mr-6">
+          Cookie Einstellungen
+        </button>
+        <button class="closePopup whitespace-nowrap border-2 rounded-lg border-[#E96809] py-2 px-8 mr-6 my-2 sm:my-0">
+          Alle zulassen
+        </button>
+      </div>
+    </div>
   </div>
 
 
   <!-- Cookie Popup -->
-
   <div id="CookiePopup" class="fixed w-[730px] min-w-[730px] h-[580px] inset-0 m-auto">
 
     <!-- Header -->
     <div id="header" class="h-auto p-4 flex justify-between items-center drop-shadow-lg bg-white">
       <div>Cookie Einstellungen</div>
-      <img src="https://github.com/DanielRolfs/media/blob/main/blu/blu-orange-small.jpg" width="100" height="40" />
+      <img src="" width="100" height="40" />
     </div>
 
     <!-- Menu Bar -->
