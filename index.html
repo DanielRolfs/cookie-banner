@@ -32,7 +32,8 @@ bitte TailwindCSS und jQuery verwenden-->
         $(".tab_navigation li:first").addClass("border-l-4 border-[#e96809]");
 
         $(".tab_navigation li").click(function (event) {
-          index = $(this).index();
+          var index = $(this).index();
+          /* alert( "That was toggle index #" + index ); */
           $(".tab_navigation li").removeClass("border-l-4 border-[#e96809]");
           $(this).addClass("border-l-4 border-[#e96809]");
           $(".tab_container").hide();
@@ -50,33 +51,23 @@ bitte TailwindCSS und jQuery verwenden-->
         );
 
       /* Change toggle style when activated */
+        
 
         /* This toggle button */
         $(".toggle").click(function () {
           $(this).toggleClass("bg-[#e96809]");
           $(this).children(".toggleCircle").toggleClass("translate-x-5");
         });
-        /* Change corresponding menu (in)activated */
-        $(".first-toggle").click(function () {
-          $(".first-indicator").toggleClass("hidden");
-        });
+        /* Change corresponding menu (in)activated without specified classes*/
+        $(".toggle").click(function () {
+          var index = $(".toggle").index(this);
 
-        $(".second-toggle").click(function () {
-          $(".second-indicator").toggleClass("hidden");
+          $(".tab_navigation li.toggler").eq(index).find(".inaktiv").toggleClass("hidden");
+          $(".tab_navigation li.toggler").eq(index).find(".aktiv").toggleClass("hidden");
         });
-        
-
-        /* I tried to make it working in without specified classes: */
-/*         $(".toggle").click(function (event) {
-          index = $(this).index();
-          $(this).each( function(){
-            alert( "That was toggle index #" + index );
-          });
+ 
           
-        $(".tab_navigation li").eq(i).click(function () {
-            $(".inaktiv").toggleClass("hidden");
-            $(".aktiv").toggleClass("hidden");
-          }); */
+       
       
 
         /* All toggle buttons */
@@ -161,17 +152,17 @@ bitte TailwindCSS und jQuery verwenden-->
         </li>
 
         <!-- 3 -->
-        <li class=" px-4 py-2">
+        <li class="toggler px-4 py-2">
           <p>Erstanbieter-Analytik</p>
-          <p class="first-indicator inaktiv text-[#E96809] text-xs">inaktiv</p>
-          <p class="first-indicator aktiv hidden text-[#E96809] text-xs">aktiv</p>
+          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
         <!-- 4 -->
-        <li class="px-4 py-2">
+        <li class="toggler px-4 py-2">
           <p>Leistung und Funktion</p>
-          <p class="second-indicator inaktiv text-[#E96809] text-xs">inaktiv</p>
-          <p class="second-indicator aktiv hidden text-[#E96809] text-xs">aktiv</p>
+          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
 
@@ -237,7 +228,7 @@ bitte TailwindCSS und jQuery verwenden-->
             <div class="mr-2">
               <!-- Toggle Button -->
               <button type="button"
-                class="first-toggle toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
+                class="toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
                 role="switch" aria-checked="false">
                 <span class="sr-only">Use setting</span>
                 <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
@@ -269,7 +260,7 @@ bitte TailwindCSS und jQuery verwenden-->
             <div class="mr-2">
               <!-- Toggle Button -->
               <button type="button"
-                class="second-toggle toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
+                class="toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
                 role="switch" aria-checked="false">
                 <span class="sr-only">Use setting</span>
                 <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
