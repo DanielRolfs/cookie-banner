@@ -21,57 +21,83 @@ bitte TailwindCSS und jQuery verwenden-->
       /* Hide Cookie popup on start*/
       $("#CookiePopup").hide();
 
+
       /* Toggle Cookie popup */
-      $("#openPopupButton").click(function () {
-        $("#CookiePopup").toggle();
-      });
+        $("#openPopupButton").click(function () {
+          $("#CookiePopup").toggle();
+        });
 
       /* Highlight selected menu item */
-      $(".tab_container:first").show();
-      $(".tab_navigation li:first").addClass("border-l-4 border-[#e96809]");
+        $(".tab_container:first").show();
+        $(".tab_navigation li:first").addClass("border-l-4 border-[#e96809]");
 
-      $(".tab_navigation li").click(function (event) {
-        index = $(this).index();
-        $(".tab_navigation li").removeClass("border-l-4 border-[#e96809]");
-        $(this).addClass("border-l-4 border-[#e96809]");
-        $(".tab_container").hide();
-        $(".tab_container").eq(index).show();
-      });
+        $(".tab_navigation li").click(function (event) {
+          index = $(this).index();
+          $(".tab_navigation li").removeClass("border-l-4 border-[#e96809]");
+          $(this).addClass("border-l-4 border-[#e96809]");
+          $(".tab_container").hide();
+          $(".tab_container").eq(index).show();
+        });
 
       /* Change style of hover menu item */
-      $("li").hover(
-        function () {
-          $(this).addClass("bg-[#e96809]/25");
-        },
-        function () {
-          $(".tab_navigation li").removeClass("bg-[#e96809]/25");
-        }
-      );
+        $("li").hover(
+          function () {
+            $(this).addClass("bg-[#e96809]/25");
+          },
+          function () {
+            $(".tab_navigation li").removeClass("bg-[#e96809]/25");
+          }
+        );
 
       /* Change toggle style when activated */
-      $(".toggle").click(function () {
-        $(this).toggleClass("bg-[#e96809]");
-        $(this).children(".toggleCircle").toggleClass("translate-x-5");
-      });
 
-      $("#activateAll").click(function () {
-        $(".toggle").addClass("bg-[#e96809]");
-        $(".toggleCircle").addClass("translate-x-5");
-        $(".inaktiv").addClass("hidden");
-        $(".aktiv").removeClass("hidden");
-      });
+        /* This toggle button */
+        $(".toggle").click(function () {
+          $(this).toggleClass("bg-[#e96809]");
+          $(this).children(".toggleCircle").toggleClass("translate-x-5");
+        });
+        /* Change corresponding menu (in)activated */
+        $(".first-toggle").click(function () {
+          $(".first-indicator").toggleClass("hidden");
+        });
 
-      $("#deactivateAll").click(function () {
-        $(".toggle").removeClass("bg-[#e96809]");
-        $(".toggleCircle").removeClass("translate-x-5");
-        $(".aktiv").addClass("hidden");
-        $(".inaktiv").removeClass("hidden");
-      });
+        $(".second-toggle").click(function () {
+          $(".second-indicator").toggleClass("hidden");
+        });
+        
+
+        /* I tried to make it working in without specified classes: */
+/*         $(".toggle").click(function (event) {
+          index = $(this).index();
+          $(this).each( function(){
+            alert( "That was toggle index #" + index );
+          });
+          
+        $(".tab_navigation li").eq(i).click(function () {
+            $(".inaktiv").toggleClass("hidden");
+            $(".aktiv").toggleClass("hidden");
+          }); */
+      
+
+        /* All toggle buttons */
+        $("#activateAll").click(function () {
+          $(".toggle").addClass("bg-[#e96809]");
+          $(".toggleCircle").addClass("translate-x-5");
+          $(".inaktiv").addClass("hidden");
+          $(".aktiv").removeClass("hidden");
+        });
+
+        $("#deactivateAll").click(function () {
+          $(".toggle").removeClass("bg-[#e96809]");
+          $(".toggleCircle").removeClass("translate-x-5");
+          $(".aktiv").addClass("hidden");
+          $(".inaktiv").removeClass("hidden");
+        });
 
       /* Close Cookie Popup */
-      $(".closePopup").click(function () {
-        $("#CookiePopup").hide();
-      });
+        $(".closePopup").click(function () {
+          $("#CookiePopup").hide();
+        });
 
     });
 
@@ -135,17 +161,17 @@ bitte TailwindCSS und jQuery verwenden-->
         </li>
 
         <!-- 3 -->
-        <li class="px-4 py-2">
+        <li class=" px-4 py-2">
           <p>Erstanbieter-Analytik</p>
-          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
-          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
+          <p class="first-indicator inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="first-indicator aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
         <!-- 4 -->
         <li class="px-4 py-2">
           <p>Leistung und Funktion</p>
-          <p class="inaktiv text-[#E96809] text-xs">inaktiv</p>
-          <p class="aktiv hidden text-[#E96809] text-xs">aktiv</p>
+          <p class="second-indicator inaktiv text-[#E96809] text-xs">inaktiv</p>
+          <p class="second-indicator aktiv hidden text-[#E96809] text-xs">aktiv</p>
         </li>
 
 
@@ -211,7 +237,7 @@ bitte TailwindCSS und jQuery verwenden-->
             <div class="mr-2">
               <!-- Toggle Button -->
               <button type="button"
-                class="toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
+                class="first-toggle toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
                 role="switch" aria-checked="false">
                 <span class="sr-only">Use setting</span>
                 <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
@@ -243,7 +269,7 @@ bitte TailwindCSS und jQuery verwenden-->
             <div class="mr-2">
               <!-- Toggle Button -->
               <button type="button"
-                class="toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
+                class="second-toggle toggle bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-[#e96809]"
                 role="switch" aria-checked="false">
                 <span class="sr-only">Use setting</span>
                 <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
